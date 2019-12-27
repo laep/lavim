@@ -28,7 +28,9 @@ else
     set backup		" keep a backup file (restore to previous version)
     set undofile		" keep an undo file (undo changes after closing)
 endif
+set path+=.,*,,**
 set history=50		" keep 50 lines of command line history
+set path+=.,*,,**
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -42,6 +44,9 @@ set wildmenu		" Shows autocomplete options
 set tabstop=4		" Number of spaces inserted when pressed tab
 set expandtab		" Changes spaces with tabs
 set shiftwidth=4	" Indention is 4 spaces
+set foldmethod=syntax "folds are based on syntax
+set nofoldenable    " folds are not enabled by default
+set foldlevel=1     " only 1 level of folds (folds only once?)
 
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -128,6 +133,8 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize = 20
 " opens windows on vertical right window
 let g:netrw_altv = 1
+" hide files from netrw
+let g:netrw_list_hide= netrw_gitignore#Hide().'.*\.swp$,.*\~$'
 
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
@@ -154,7 +161,7 @@ set background=dark
 colorscheme solarized
 
 " Automatic update CTAGS
-au BufWritePost *.java !ctags -R
+au BufWritePost *.java,*.clj !ctags -R
 
 " Activate rainbow parentheses
 let g:rainbow_active = 1
