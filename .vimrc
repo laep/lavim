@@ -158,6 +158,7 @@ call plug#end()
 " Solarized theme
 syntax enable
 set background=dark
+let g:solarized_termcolors=16
 colorscheme solarized
 
 " Automatic update CTAGS
