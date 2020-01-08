@@ -47,6 +47,7 @@ set shiftwidth=4	" Indention is 4 spaces
 set foldmethod=syntax "folds are based on syntax
 set nofoldenable    " folds are not enabled by default
 set foldlevel=1     " only 1 level of folds (folds only once?)
+set clipboard=unnamedplus "shares clipboard with the system
 
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -149,8 +150,17 @@ Plug 'altercation/vim-colors-solarized', {'branch': 'master'}
 " Fireplace
 Plug 'tpope/vim-fireplace', {'branch': 'master'}
 
+" vim fugitive
+Plug 'tpope/vim-fugitive'
+
 " Ranbow parentheses
 Plug 'luochen1990/rainbow'
+
+" surround plug in
+Plug 'tpope/vim-surround'
+
+" closes tags, very good for html
+Plug 'alvan/vim-closetag'
 
 " Initialize plugin system
 call plug#end()
@@ -188,3 +198,60 @@ let g:rainbow_conf = {
             \       'css': 0,
             \   }
             \}
+
+
+" powerline status bar
+set rtp+=$HOME/.local/lib/python3.8/site-packages/powerline/bindings/vim/
+
+" always shows the status line
+set laststatus=2
+
+" use 256 colours
+set t_Co=16
+
+if &term =~ '256color'
+    set t_ut=
+endif
+
+
+" Configurations for close tag
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is '\'
+"
+let g:closetag_close_shortcut = '<leader>>'
