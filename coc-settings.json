@@ -1,0 +1,26 @@
+{
+    "languageserver": {
+    "clojure-lsp": {
+      "command": "bash",
+      "args": ["-c", "clojure-lsp"],
+      "filetypes": ["clojure"],
+      "rootPatterns": ["project.clj"],
+      "additionalSchemes": ["jar", "zipfile"],
+      "trace.server": "verbose",
+      "initializationOptions": {
+      }
+    }
+  },
+  "html.enable": true,
+  "html.trace.server": "verbose",
+  "html.filetypes": [
+      "html",
+      "handlebars"
+  ],
+  "html.format.enable": true,
+  "html.validate.scripts": true,
+  "html.validate.html": true,
+  "html.validate.styles": true,
+  "html.suggest.html5": true
+}
+
